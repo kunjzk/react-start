@@ -26,3 +26,7 @@
 3. To run the app, we do `npm run dev`
 4. In JSX you can only return one element, so everything must be wrapped in a div. For simplicity, we can use `<>` and `</>`.
 5. To import your own code and create your own elements: Write a new JSX file, wrap the element to be exported in a function whose first letter is capitalized. Export that function and import it into the App.jsx file. Render the component with `<Component />`.
+
+## React Elements and types
+
+A react element can be created with `React.createElement`. This function accepts 3 params: first, the type of the HTML element, next the properties ("props") and finally the children. This is then parsed by react to render HTML. When rendering an element of this type, we don't need to use the angled bracket syntax <Component />. When using the JSX syntax (<Component />), it's actually syntactic sugar that gets transformed into `React.createElement` calls during compilation. Component here is a JS obect that returns HTML.
