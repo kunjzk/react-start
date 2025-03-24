@@ -30,3 +30,16 @@
 ## React Elements and types
 
 A react element can be created with `React.createElement`. This function accepts 3 params: first, the type of the HTML element, next the properties ("props") and finally the children. This is then parsed by react to render HTML. When rendering an element of this type, we don't need to use the angled bracket syntax <Component />. When using the JSX syntax (<Component />), it's actually syntactic sugar that gets transformed into `React.createElement` calls during compilation. Component here is a JS obect that returns HTML.
+
+## State
+
+Recap: JSX (syntax extension for javascript) allows you to write HTML-like code within your javascript files. The JSX code is transformed into regular javascript calls to `React.createElement()`.
+
+- Javascript expressions can be embedded into JSX code using `{}`.
+
+- Any change in state re-renders the UI. --> this is a unique feature of React.
+- To use state, use the `useState()` method which returns two variables. One is a variable and the other is a method to set it. You can use the variable as you like, but when you want to change its value you have to use the method. The argument to `useState()` defines the starting value of the initialized variable. No type enforcement, can do anything.
+- See setCounter() example
+- If we want to set the value multiple times in the same block, it won't work without callbacks. Without callbacks, react performs "batching" where it condenses all the calls to the editing function together.
+- Many advantages to react state: state is per component, making data flow simple and clear. State can be inherited too. Conditions that cause a re-render are also very clear.
+- Sample that uses multiple state updates: setCounter((prevCounter) => prevCounter - 1);
