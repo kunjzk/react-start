@@ -53,3 +53,5 @@ Recap: JSX (syntax extension for javascript) allows you to write HTML-like code 
 - Goal: increase suitability for animation etc. Main feature: incremental rendering. Ability to split rendering work into chunks and spread it out over multiple frames.
 - README: https://github.com/acdlite/react-fiber-architecture
 - A fiber is a JS object that contains information about a component, its input and its output. Fiber opitmizes processing of user inputs (called "work") to boost performance on browsers for a smooth user experience.
+
+## Props + tailwind + components
