@@ -43,3 +43,13 @@ Recap: JSX (syntax extension for javascript) allows you to write HTML-like code 
 - If we want to set the value multiple times in the same block, it won't work without callbacks. Without callbacks, react performs "batching" where it condenses all the calls to the editing function together.
 - Many advantages to react state: state is per component, making data flow simple and clear. State can be inherited too. Conditions that cause a re-render are also very clear.
 - Sample that uses multiple state updates: setCounter((prevCounter) => prevCounter - 1);
+
+## Virtual DOM
+
+- Problem: reloading the entire DOM is expensive. To solve this, React maintains a copy of the DOM (virtual DOM) and observes which components have changed, then it reloads the actual DOM only on that particualr component.
+
+## Fiber
+
+- Goal: increase suitability for animation etc. Main feature: incremental rendering. Ability to split rendering work into chunks and spread it out over multiple frames.
+- README: https://github.com/acdlite/react-fiber-architecture
+- A fiber is a JS object that contains information about a component, its input and its output. Fiber opitmizes processing of user inputs (called "work") to boost performance on browsers for a smooth user experience.
