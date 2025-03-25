@@ -55,3 +55,6 @@ Recap: JSX (syntax extension for javascript) allows you to write HTML-like code 
 - A fiber is a JS object that contains information about a component, its input and its output. Fiber opitmizes processing of user inputs (called "work") to boost performance on browsers for a smooth user experience.
 
 ## Props + tailwind + components
+
+- JSX components can be passed parameters via `props`. Now you can override the content within components, making them more reusable. Props are KV pairs.
+- We can destructure a prop when declaring a component by having it accept `{propName}` as a parameter. We can pass a prop by simply using `propName = "value"` when rendering the component. Objects can be passsed with `propName = {object}`.
