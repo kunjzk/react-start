@@ -43,6 +43,7 @@ Recap: JSX (syntax extension for javascript) allows you to write HTML-like code 
 - If we want to set the value multiple times in the same block, it won't work without callbacks. Without callbacks, react performs "batching" where it condenses all the calls to the editing function together.
 - Many advantages to react state: state is per component, making data flow simple and clear. State can be inherited too. Conditions that cause a re-render are also very clear.
 - Sample that uses multiple state updates: setCounter((prevCounter) => prevCounter - 1);
+- useState() is a state hook
 
 ## Virtual DOM
 
