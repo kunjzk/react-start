@@ -59,3 +59,10 @@ Recap: JSX (syntax extension for javascript) allows you to write HTML-like code 
 
 - JSX components can be passed parameters via `props`. Now you can override the content within components, making them more reusable. Props are KV pairs.
 - We can destructure a prop when declaring a component by having it accept `{propName}` as a parameter. We can pass a prop by simply using `propName = "value"` when rendering the component. Objects can be passsed with `propName = {object}`.
+
+## Common hooks: useCallback, useEffect, useRef
+
+- useCallback implements memoization on your function so that you don't need to constantly recalculate stuff. Efficiency. You can specify the dependencies of the function to be memoized.
+- useEffect allows you to run code based on a variety of scenarios - useful when you want to run a method as soon as something changes.
+- useRef allows you to reference any component in your code
+- Examples in 05pwdgenerator.
