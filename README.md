@@ -71,3 +71,8 @@ Recap: JSX (syntax extension for javascript) allows you to write HTML-like code 
 
 - Can be written to respond to changes in given events, and defined anywhere in codebase, commonly kept in hooks/ folder
 - Components need to be passed props, when passing functions be careful to pass arrow functions (callbacks) which will wait until getting triggered before execution.
+
+## React router
+
+- How to create multi-page looking apps in a Single page
+- `npm i react-router-dom`
