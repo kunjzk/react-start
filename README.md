@@ -66,3 +66,8 @@ Recap: JSX (syntax extension for javascript) allows you to write HTML-like code 
 - useEffect allows you to run code based on a variety of scenarios - useful when you want to run a method as soon as something changes.
 - useRef allows you to reference any component in your code
 - Examples in 05pwdgenerator.
+
+## Custom hooks
+
+- Can be written to respond to changes in given events, and defined anywhere in codebase, commonly kept in hooks/ folder
+- Components need to be passed props, when passing functions be careful to pass arrow functions (callbacks) which will wait until getting triggered before execution.
