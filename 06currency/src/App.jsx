@@ -6,18 +6,21 @@ import { InputBox } from "./components/index.js";
 function App() {
   const [amount, setAmount] = useState(0);
   const [from, setFrom] = useState("usd");
-  const [to, setTo] = useState();
+  const [to, setTo] = useState("sgd");
   const [convertedAmount, setConvertedAmount] = useState(0);
 
   const currencyInfo = useCurrencyInfo(from);
   console.log("Currency info is: ", currencyInfo);
-  // const options = Object.keys(currencyInfo);
+  const options = Object.keys(currencyInfo);
+  console.log(options);
 
   const swap = () => {
+    let tmp = from;
     setFrom(to);
-    setTo(from);
+    setTo(tmp);
+    tmp = convertedAmount;
     setConvertedAmount(amount);
-    setAmount(convertedAmount);
+    setAmount(tmp);
   };
 
   const convert = () => {
@@ -40,8 +43,40 @@ function App() {
             }}
           >
             <div className="w-full mb-1">
-              <InputBox />
+              <InputBox
+                currencyOptions={options}
+                label={"From"}
+                amount={amount}
+                selectedCurrency={from}
+                onCurrencyChange={(currency) => setFrom(currency)} // We are passing a callback function here. This will wait until an event occurs before getting executed. We are passing the function as a prop.
+                onAmountChange={(amount) => setAmount(amount)}
+              />
             </div>
+            <div className="relative w-full h-0.5">
+              <button
+                onClick={swap}
+                className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5"
+              >
+                Swap
+              </button>
+            </div>
+            <div className="w-full mb-1">
+              <InputBox
+                currencyOptions={options}
+                label={"To"}
+                amount={convertedAmount}
+                amountDisabled={true}
+                selectedCurrency={to}
+                onCurrencyChange={(currency) => setTo(currency)} // We are passing a callback function here. This will wait until an event occurs before getting executed. We are passing the function as a prop.
+                onAmountChange={(amount) => setConvertedAmount(amount)}
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg"
+            >
+              Convert {from.toUpperCase()} to {to.toUpperCase()}
+            </button>
           </form>
         </div>
       </div>
