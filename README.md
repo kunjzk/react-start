@@ -77,3 +77,25 @@ Recap: JSX (syntax extension for javascript) allows you to write HTML-like code 
 - How to create multi-page looking apps in a Single page
 - `npm i react-router-dom`
 - Docs: https://reactrouter.com/home
+- Basic version: https://reactrouter.com/start/declarative/routing
+
+- Enables client-side routing in React apps, allowing us to:
+  1. Map URLs to specific react components, without full page reloads
+  2. Handle navigation while maintaining application state
+  3. Create a multi-page-like experience without leaving the single page app you're in
+- It does this by intercepting URL changes and rendering different components based on the URL, all while staying in the same page load.
+- Create a Layout.jsx that contains a header, footer and somehting called an `<Outlet />`. This is like a hole that gets filled by a new component when react router renders it.
+- The router is setup like this:
+
+```
+<BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />  {/* Renders in Outlet */}
+      <Route path="about" element={<About />} />  {/* Renders in Outlet */}
+    </Route>
+  </Routes>
+</BrowserRouter>
+```
+
+Elements can be rendered either at index (same path as the top level route) or on a sub-route.

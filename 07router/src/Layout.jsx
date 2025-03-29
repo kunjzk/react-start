@@ -7,7 +7,7 @@ function Layout() {
   return (
     <>
       <Header />
-      <Outlet /> This is provided by react router
+      <Outlet />
       <Footer />
     </>
   );
