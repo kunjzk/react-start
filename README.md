@@ -99,3 +99,68 @@ Recap: JSX (syntax extension for javascript) allows you to write HTML-like code 
 ```
 
 Elements can be rendered either at index (same path as the top level route) or on a sub-route.
+
+### Path parameters
+
+To setup a route to accept path parameters,
+
+1. Define the path parameter in the route setup (`:userid`)
+2. Import the useParams hook in the relevant component. This is a hook because we need to update the component when the URL changes.
+3. Access the parameter value using useParams: `const { userid } = useParams();`
+   The parameter name in the route definition (`:userid`) must match the property name you destructure from useParams (`{ userid }`).
+
+### Avoiding infinite loops when setting state
+
+- Hooks are useful for this. If we need to make a get request everytime a component loads for example and set state accordingly, we'd be stuck in an infinite loop.:
+
+```
+function Github() {
+  const [data, setData] = useState(null);
+
+  // THIS IS BAD - would create an infinite loop!
+  fetch("https://api.github.com/users/kunjzk")
+    .then(response => response.json())
+    .then(data => setData(data)); // This setState causes re-render, which causes another fetch...
+
+  return <div>{/* ... */}</div>;
+}
+```
+
+Better to use `useEffect` with an empty dependency array. This tells react that the effect has no dependencies and shoudl run only once when the compnent mounts (is rendered.)
+
+```
+// 1. Empty array: Runs once on mount
+useEffect(() => {
+  // runs only once when component mounts
+}, [])
+
+// 2. No array: Runs on every render
+useEffect(() => {
+  // runs after every render
+})
+
+// 3. With dependencies: Runs when dependencies change
+useEffect(() => {
+  // runs when userId or name changes
+}, [userId, name])
+```
+
+### Loaders and react router data mode
+
+Sometimes we want to preload data on a page before the user has navigated to it as a performance optimization. React provides this functionality though a `loader`.
+
+A loader is a function exported from the component module. The loader fetches data and returns it:
+
+```
+export const githubLoader = async () => {
+  const response = await fetch("https://api.github.com/users/kunjzk");
+  return response.json();
+};
+```
+
+It is then imported in main.jsx (or wherever routing occurs) and supplied as a prop to the route.
+To use the data, import the `useLoaderData` hook in the component code and call it. Data returned by this loader can be used.
+
+However, to use the loader, we need to use react router in Data mode: https://reactrouter.com/start/modes, so some slight refactoring is required according to the guide here: https://reactrouter.com/start/data/routing
+
+Basically, use `createBrowserRouter` function, define routes using JSON syntax, function returns a router object which is used to render components by passing it to the `ReactDOM.render()` function with `<RouterProvider router={router}>`.
