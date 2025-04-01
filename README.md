@@ -164,3 +164,15 @@ To use the data, import the `useLoaderData` hook in the component code and call 
 However, to use the loader, we need to use react router in Data mode: https://reactrouter.com/start/modes, so some slight refactoring is required according to the guide here: https://reactrouter.com/start/data/routing
 
 Basically, use `createBrowserRouter` function, define routes using JSON syntax, function returns a router object which is used to render components by passing it to the `ReactDOM.render()` function with `<RouterProvider router={router}>`.
+
+## Context
+
+A global store of state that any component, no matter the nesting, can retrieve or update data in.
+A lot of boiletplate required but the benefit is no more passing props around ("prop drilling"). Each component can set and get state as it wants, directly.
+
+Boilerplate:
+
+1. Define the context in a js file and export it
+2. Define the provider in a jsx file and export it
+3. Wrap elements that need to access the context using <xxxContextProvider> in App.jsx
+4. In the element, use React's `useContext` hook together with the context object itself to extract, or set, data in the context.
