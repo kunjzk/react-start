@@ -196,3 +196,10 @@ Always 3 steps:
 3. Create the hook to get and set values from the context
 
 Note: Dark mode in new tailwind is configured in `index.css` with the line: @custom-variant dark (&:where(.dark, .dark \*));
+
+## Context API + Local Storage
+
+Build order:
+
+1. Context
+2. Components
