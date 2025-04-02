@@ -10,6 +10,19 @@ function App() {
     setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
   };
 
+  const updateTodo = (id, todo) => {
+    setTodos((prev) => prev.map((t) => (t.id === todo.id ? todo : t)));
+  };
+
+  const deleteTodo = (id) => {
+    setTodos((prev) => prev.filter((t) => t.id !== id));
+  };
+
+  const toggleCompleted = (id) => {
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+    );
+  };
   return (
     <TodoProvider
       value={{ todos, addTodo, updateTodo, deleteTodo, toggleCompleted }}

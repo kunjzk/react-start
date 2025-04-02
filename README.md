@@ -203,3 +203,10 @@ Build order:
 
 1. Context
 2. Components
+
+### Syntax gotchas
+
+1. `map` is a js array method that creates a new array by transforming each element of the original. Takes a callback function as argument. Callback receives the current element. Useful for looping through structs. Good for transforming data, creating lists, converting.
+2. `filter` creates a new array containing only elements that pass a test.
+3. `...` ie `spread` operator will flatten an object by copying all its properties into a new object. Without spreading we'd get a nested structure (maps, lists are hard to append to)
+4. State setters receive current values from React by default
