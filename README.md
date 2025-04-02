@@ -176,3 +176,23 @@ Boilerplate:
 2. Define the provider in a jsx file and export it
 3. Wrap elements that need to access the context using <xxxContextProvider> in App.jsx
 4. In the element, use React's `useContext` hook together with the context object itself to extract, or set, data in the context.
+
+## Simplified context
+
+Defining
+
+- We can simplify `useContext(xxContext)` by creating a function that wraps this call
+- Explicitly define data in context, create convenient provider and custom hook all in one place
+- check `09darkMode`
+
+Usage
+
+- Wrap your components with `<xxProvider value = {{ ... }}>`. Within the component we want to just call `useXXX` -> the custom hook we wrote.
+
+Always 3 steps:
+
+1. Create a context (`createContext`)
+2. Make sure everyone's aware of the context (`export const provider = context.Provider`)
+3. Create the hook to get and set values from the context
+
+Note: Dark mode in new tailwind is configured in `index.css` with the line: @custom-variant dark (&:where(.dark, .dark \*));
